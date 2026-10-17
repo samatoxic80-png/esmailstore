@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082b63">
+  <meta name="description" content="إسماعيل ستور متجرك الأول للأدوات المكتبية والمدرسية كراسات أقلام أدوات هندسية وتوصيل سريع">
+  <meta property="og:title" content="إسماعيل ستور أدواتك المكتبية والمدرسية">
+  <meta property="og:description" content="كل احتياجاتك المكتبية في مكان واحد مع توصيل سريع">
+  <title>إسماعيل ستور | Esmail Store</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --primary:#082b63;
+      --primary-dark:#061d43;
+      --primary-light:#0d58b6;
+      --accent:#ffd329;
+      --green:#20a95a;
+      --red:#ed2939;
+      --bg:#f5f7fb;
+      --border:#e5e9f1;
+      --text:#152238;
+      --muted:#6b7a95;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    button,input,textarea{font:inherit;font-family:inherit}
+    button{cursor:pointer;border:0;transition:.2s}
+    button:active{transform:scale(.97)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* ===== Top Bar ===== */
+    .top{background:var(--primary-dark);color:#fff;text-align:center;padding:9px 12px;font-size:13px;font-weight:600;letter-spacing:.3px}
+
+    /* ===== Header ===== */
+    header{position:sticky;top:0;z-index:50;background:var(--primary);color:#fff;box-shadow:0 4px 20px #0000001a;backdrop-filter:blur(10px)}
+    .nav{max-width:1250px;margin:auto;display:flex;align-items:center;gap:18px;padding:14px 18px}
+    .logo{font-size:22px;font-weight:900;white-space:nowrap;display:flex;align-items:center;gap:6px}
+    .logo span{color:var(--accent)}
+    .search{flex:1;display:flex;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 2px 10px #0000000d;transition:.2s}
+    .search:focus-within{box-shadow:0 0 0 3px #ffd32955}
+    .search input{width:100%;border:0;outline:0;padding:12px 20px;color:#222;background:transparent;font-size:15px}
+    .search button{background:var(--accent);padding:0 22px;font-size:17px}
+    .search button:hover{background:#f5c400}
+    .cartBtn{background:#fff;color:var(--primary);border-radius:14px;padding:11px 16px;font-weight:800;position:relative;display:flex;align-items:center;gap:6px;font-size:14px}
+    .cartBtn:hover{background:var(--accent)}
+    .badge{position:absolute;top:-7px;left:-7px;background:var(--red);color:#fff;border-radius:50%;width:22px;height:22px;font-size:12px;display:grid;place-items:center;font-weight:900;box-shadow:0 2px 6px #ed293955}
+
+    /* ===== Hero ===== */
+    .hero{max-width:1250px;margin:18px auto;padding:45px 35px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#06285e 0%,#0d58b6 100%);color:#fff;position:relative;box-shadow:0 15px 40px #082b6325}
+    .hero:before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle,#ffd32955,transparent 70%);border-radius:50%}
+    .hero:after{content:"";position:absolute;bottom:-50px;left:-50px;width:200px;height:200px;background:radial-gradient(circle,#0d58b6aa,transparent 70%);border-radius:50%}
+    .heroContent{position:relative;z-index:2;max-width:700px}
+    .heroBadge{display:inline-block;background:#ffd32922;border:1px solid #ffd32955;color:var(--accent);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:14px}
+    .hero h1{font-size:clamp(28px,5vw,52px);margin-bottom:14px;font-weight:900;line-height:1.25}
+    .hero h1 span{color:var(--accent)}
+    .hero p{font-size:17px;line-height:1.85;opacity:.95;margin-bottom:10px}
+    .heroBtn{margin-top:15px;background:var(--accent);color:var(--primary);padding:15px 32px;border-radius:30px;font-weight:900;font-size:16px;box-shadow:0 10px 25px #ffd32944}
+    .heroBtn:hover{transform:translateY(-3px);box-shadow:0 15px 32px #ffd32966}
+    .heroIcons{position:absolute;left:35px;bottom:25px;font-size:55px;opacity:.85;z-index:1;letter-spacing:8px}
+    .heroStats{display:flex;gap:25px;margin-top:25px;position:relative;z-index:2;flex-wrap:wrap}
+    .stat{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#dbe7fb}
+    .stat b{color:var(--accent);font-size:18px}
+
+    /* ===== Categories ===== */
+    .cats{max-width:1250px;margin:15px auto;display:flex;gap:10px;overflow-x:auto;padding:0 18px 10px;scrollbar-width:thin}
+    .cats::-webkit-scrollbar{height:6px}
+    .cats::-webkit-scrollbar-thumb{background:#c5cfe0;border-radius:3px}
+    .cats::-webkit-scrollbar-track{background:transparent}
+    .cat{background:#fff;border:1.5px solid var(--border);border-radius:15px;padding:12px 20px;min-width:115px;text-align:center;font-weight:800;font-size:14px;white-space:nowrap;color:var(--text)}
+    .cat:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
+    .cat.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 8px 18px #082b6344}
+
+    /* ===== Main ===== */
+    main{max-width:1250px;margin:auto;padding:0 18px 50px}
+    .sectionHead{display:flex;align-items:center;justify-content:space-between;margin:28px 0 18px;flex-wrap:wrap;gap:10px}
+    .sectionHead h2{font-size:25px;font-weight:900;color:var(--primary);display:flex;align-items:center;gap:8px}
+    #result{color:var(--muted);font-size:14px;font-weight:700;background:#fff;padding:6px 14px;border-radius:20px;border:1px solid var(--border)}
+
+    /* ===== Products Grid ===== */
+    .products{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 15px #172b4d0b;transition:.3s;display:flex;flex-direction:column;position:relative}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px #172b4d1f;border-color:#c5d5f0}
+    .pic{height:200px;background:linear-gradient(135deg,#f0f4fa,#e8eef8);display:grid;place-items:center;overflow:hidden;position:relative}
+    .pic img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .card:hover .pic img{transform:scale(1.08)}
+    .pic:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,#00000015);pointer-events:none}
+    .info{padding:14px;flex:1;display:flex;flex-direction:column;gap:6px}
+    .tag{display:inline-block;background:linear-gradient(135deg,#e9f2ff,#d4e6ff);color:#1261c9;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800;align-self:flex-start;border:1px solid #b8d4ff}
+    .name{font-weight:800;min-height:44px;font-size:15px;line-height:1.45;color:var(--text)}
+    .price{color:var(--red);font-size:21px;font-weight:900;margin:4px 0 8px}
+    .add{width:100%;background:var(--primary);color:#fff;padding:11px;border-radius:11px;font-weight:800;font-size:14px;margin-top:auto;display:flex;align-items:center;justify-content:center;gap:6px}
+    .add:hover{background:var(--primary-light);box-shadow:0 8px 20px #0868d844}
+    .empty{grid-column:1/-1;text-align:center;padding:60px 20px;background:#fff;border-radius:16px;color:var(--muted);font-size:16px;font-weight:600}
+
+    /* ===== Footer ===== */
+    footer{background:linear-gradient(180deg,#061d43,#0a2551);color:#fff;padding:45px 18px 25px;margin-top:30px}
+    .footerIn{max-width:1250px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+    footer h3{margin-bottom:14px;color:var(--accent);font-size:17px;font-weight:800}
+    footer p{color:#dbe7fb;line-height:1.9;font-size:14px}
+    footer a{color:#dbe7fb;transition:.2s}
+    footer a:hover{color:var(--accent)}
+    .copyright{text-align:center;margin-top:35px;padding-top:22px;border-top:1px solid #ffffff1a;color:#9fb0cc;font-size:13px}
+
+    /* ===== WhatsApp Float ===== */
+    .wa{position:fixed;bottom:22px;left:22px;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:30px;box-shadow:0 10px 30px #25d36655;z-index:60;transition:.3s;animation:pulse 2.5s infinite}
+    .wa:hover{transform:scale(1.12) rotate(5deg)}
+    @keyframes pulse{0%,100%{box-shadow:0 10px 30px #25d36655}50%{box-shadow:0 10px 40px #25d36699}}
+
+    /* ===== Cart Drawer ===== */
+    .overlay{position:fixed;inset:0;background:#0009;z-index:100;display:none;backdrop-filter:blur(4px)}
+    .overlay.show{display:block;animation:fadeIn .25s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .drawer{position:absolute;right:0;top:0;height:100%;width:min(450px,95vw);background:#fff;padding:22px;overflow-y:auto;animation:slideIn .35s cubic-bezier(.22,.9,.3,1);box-shadow:-10px 0 40px #00000025}
+    @keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+    .drawerHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+    .drawerHead h2{margin:0;font-size:20px;color:var(--primary);font-weight:900;display:flex;align-items:center;gap:8px}
+    .close{background:#eef2f8;border-radius:10px;padding:8px 14px;font-weight:900;font-size:15px;color:var(--text)}
+    .close:hover{background:#e0e7f2;color:var(--red)}
+    .cartItem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #f0f3f8;align-items:center}
+    .cartItem img{width:65px;height:65px;object-fit:cover;border-radius:12px;flex-shrink:0;box-shadow:0 3px 10px #00000012}
+    .cartItem .grow{flex:1;font-size:14px;min-width:0}
+    .cartItem .grow b{font-weight:800;display:block;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cartItem .grow span{color:var(--red);font-weight:900;font-size:15px}
+    .qty{display:flex;align-items:center;gap:8px;font-weight:900;font-size:15px}
+    .qty button{width:30px;height:30px;border-radius:8px;background:#e9eef6;font-weight:900;font-size:16px;display:grid;place-items:center;color:var(--primary)}
+    .qty button:hover{background:var(--primary);color:#fff}
+    .total{font-size:22px;font-weight:900;margin:20px 0;color:var(--primary);text-align:center;padding:16px;background:linear-gradient(135deg,#f5f7fb,#eef3fb);border-radius:14px;border:1px dashed #c5d5f0}
+    .total span{color:var(--red)}
+    .checkout{width:100%;background:var(--green);color:#fff;padding:15px;border-radius:12px;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+    .checkout:hover{background:#1a8f4a;box-shadow:0 10px 25px #20a95a55}
+    .form{margin-top:15px;display:none;padding-top:18px;border-top:2px dashed var(--border)}
+    .form.show{display:block;animation:fadeIn .3s}
+    .form label{font-size:13px;font-weight:800;color:#4a5b78;display:block;margin-bottom:5px}
+    .form input,.form textarea{width:100%;padding:13px 15px;border:1.5px solid #d7deea;border-radius:11px;margin:0 0 12px;outline:0;font-size:15px;transition:.2s;font-family:inherit;background:#fafbfd}
+    .form input:focus,.form textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px #082b631a;background:#fff}
+    .form textarea{height:85px;resize:none}
+
+    /* ===== Toast ===== */
+    .toast{position:fixed;bottom:95px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--primary);color:#fff;padding:13px 26px;border-radius:30px;font-weight:700;box-shadow:0 15px 40px #00000040;z-index:200;opacity:0;transition:.35s cubic-bezier(.22,.9,.3,1);pointer-events:none;font-size:14px;max-width:90vw;text-align:center}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    /* ===== Lightbox ===== */
+    .lightbox{position:fixed;inset:0;background:#000000e6;z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:20px}
+    .lightbox.show{display:flex;animation:fadeIn .25s}
+    .lightbox img{max-width:90vw;max-height:85vh;border-radius:16px;box-shadow:0 25px 70px #00000080;object-fit:contain;animation:zoomIn .3s cubic-bezier(.22,.9,.3,1)}
+    @keyframes zoomIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+    .lightbox .lbClose{position:absolute;top:20px;left:20px;background:#fff;color:var(--primary);width:45px;height:45px;border-radius:50%;font-size:22px;font-weight:900;display:grid;place-items:center;box-shadow:0 6px 20px #00000040;z-index:2}
+    .lightbox .lbClose:hover{background:var(--red);color:#fff;transform:rotate(90deg)}
+    .lightbox .lbNav{position:absolute;top:50%;transform:translateY(-50%);background:#ffffff22;color:#fff;width:55px;height:55px;border-radius:50%;font-size:26px;font-weight:900;display:grid;place-items:center;border:2px solid #ffffff44;z-index:2;backdrop-filter:blur(6px)}
+    .lightbox .lbNav:hover{background:var(--accent);color:var(--primary);border-color:var(--accent)}
+    .lightbox .lbPrev{right:20px}
+    .lightbox .lbNext{left:20px}
+    .lightbox .lbCaption{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#fff;background:#00000099;padding:10px 22px;border-radius:30px;font-weight:700;font-size:15px;text-align:center;max-width:90vw;backdrop-filter:blur(6px);border:1px solid #ffffff22;z-index:2}
+    .lightbox .lbCounter{position:absolute;top:22px;right:22px;background:#ffffff22;color:#fff;padding:6px 14px;border-radius:20px;font-weight:800;font-size:14px;backdrop-filter:blur(6px);border:1px solid #ffffff33;z-index:2}
+
+    /* ===== Responsive ===== */
+    @media(max-width:1000px){
+      .products{grid-template-columns:repeat(3,1fr)}
+      .nav{flex-wrap:wrap}
+      .search{order:3;flex-basis:100%}
+      .heroIcons{font-size:38px;left:20px;bottom:15px}
+      .footerIn{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      .products{grid-template-columns:repeat(2,1fr);gap:10px}
+      .pic{height:150px}
+      .hero{margin:10px;border-radius:18px;padding:30px 22px}
+      .heroIcons{display:none}
+      .hero p{font-size:15px}
+      .heroStats{gap:15px}
+      .stat{font-size:12px}
+      .stat b{font-size:15px}
+      .logo{font-size:17px}
+      .nav{gap:8px;padding:10px}
+      .cartBtn{padding:9px 12px;font-size:13px}
+      .info{padding:11px}
+      .name{font-size:13.5px;min-height:38px}
+      .price{font-size:18px}
+      .add{font-size:13px;padding:10px}
+      .cat{padding:10px 15px;min-width:100px;font-size:13px}
+      .sectionHead h2{font-size:20px}
+      .wa{width:54px;height:54px;font-size:26px;bottom:16px;left:16px}
+      .footerIn{grid-template-columns:1fr;gap:20px;text-align:center}
+      .drawer{padding:18px}
+      .lightbox .lbNav{width:45px;height:45px;font-size:22px}
+      .lightbox .lbClose{width:40px;height:40px;font-size:18px;top:12px;left:12px}
+      .lightbox .lbPrev{right:8px}
+      .lightbox .lbNext{left:8px}
+      .lightbox .lbCaption{font-size:13px;padding:8px 16px;bottom:15px}
+      .lightbox .lbCounter{font-size:12px;padding:5px 10px;top:12px;right:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="top">🚚 توصيل سريع • 💰 أسعار مناسبة • ⭐ جودة عالية • 📞 خدمة مميزة</div>
+
+  <header>
+    <div class="nav">
+      <div class="logo">🛒 إسماعيل <span>ستور</span></div>
+      <div class="search">
+        <input id="search" placeholder="ابحث عن منتج..." oninput="render()">
+        <button aria-label="بحث">🔎</button>
+      </div>
+      <button class="cartBtn" onclick="openCart()">🛒 السلة <span class="badge" id="count">0</span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="heroContent">
+      <span class="heroBadge">✨ مرحبًا بك في إسماعيل ستور</span>
+      <h1>كل احتياجاتك المكتبية<br><span>في مكان واحد</span></h1>
+      <p>أدوات مدرسية ومكتبية كراسات كشاكيل أقلام أدوات هندسية وأكثر  اطلب بسهولة من إسماعيل ستور واستمتع بتوصيل سريع وجودة عالي</p>
+      <button class="heroBtn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">🛍️ تسوق الآن</button>
+      <div class="heroStats">
+        <div class="stat">⭐ <b>+500</b> عميل سعيد</div>
+        <div class="stat">📦 <b>+50</b> منتج متنوع</div>
+        <div class="stat">⚡ <b>توصيل</b> سريع</div>
+      </div>
+    </div>
+    <div class="heroIcons">✏️ 📚 🖊️</div>
+  </section>
+
+  <div class="cats">
+    <button class="cat active" onclick="setCat('الكل',this)">🏠 الكل</button>
+    <button class="cat" onclick="setCat('كراسات',this)">📒 كراسات</button>
+    <button class="cat" onclick="setCat('أقلام',this)">🖊️ أقلام</button>
+    <button class="cat" onclick="setCat('مدرسية',this)">🎒 مدرسية</button>
+    <button class="cat" onclick="setCat('هندسية',this)">📐 هندسية</button>
+    <button class="cat" onclick="setCat('مكتبية',this)">📎 مكتبية</button>
+    <button class="cat" onclick="setCat('فنية',this)">🎨 فنية</button>
+  </div>
+
+  <main>
+    <div class="sectionHead">
+      <h2>🔥 أحدث المنتجات</h2>
+      <span id="result"></span>
+    </div>
+    <section class="products" id="products"></section>
+  </main>
+
+  <footer>
+    <div class="footerIn">
+      <div>
+        <h3>🛒 إسماعيل ستور</h3>
+        <p>متجرك الأول للأدوات المكتبية والمدرسية بأسعار مناسبة وجودة عالية خدمة عملاء ممتازة وتوصيل سريع لكل مكان</p>
+      </div>
+      <div>
+        <h3>📞 تواصل معنا</h3>
+        <p>
+          واتساب: <a href="https://wa.me/201013092460">01013092460</a><br>
+          📧 samatoxic@gmail.com<br>
+          📍 مصر - قنا - مركز أبو تشت - المحارزة
+        </p>
+      </div>
+      <div>
+        <h3>⭐ خدماتنا</h3>
+        <p>
+          ✓ توصيل سريع<br>
+          ✓ أسعار منافسة<br>
+          ✓ جودة عالية<br>
+          ✓ طلب سهل عبر واتساب
+        </p>
+      </div>
+    </div>
+    <p class="copyright">© 2027 إسماعيل ستور | Esmail Store — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <a class="wa" id="wa" href="#" target="_blank" aria-label="تواصل واتساب">💬</a>
+
+  <div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()">
+    <aside class="drawer">
+      <div class="drawerHead">
+        <h2>🛒 سلة المشتريات</h2>
+        <button class="close" onclick="closeCart()" aria-label="إغلاق">✕</button>
+      </div>
+      <div id="cartList"></div>
+      <div class="total">الإجمالي: <span id="total">0</span> ج.م</div>
+      <button class="checkout" id="checkoutBtn" onclick="showForm()">📲 إتمام الطلب عبر واتساب</button>
+      <div class="form" id="form">
+        <label for="customer">الاسم بالكامل *</label>
+        <input id="customer" placeholder="اكتب اسمك هنا">
+        <label for="phone">رقم الهاتف *</label>
+        <input id="phone" type="tel" placeholder="مثال: 01012345678" inputmode="numeric">
+        <label for="address">العنوان بالتفصيل *</label>
+        <textarea id="address" placeholder="المحافظة - المدينة - الشارع - علامة مميزة"></textarea>
+        <button class="checkout" onclick="sendOrder()">✅ تأكيد وإرسال الطلب</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Lightbox عارض الصور -->
+  <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lbClose" onclick="closeLightbox()" aria-label="إغلاق">✕</button>
+    <button class="lbNav lbPrev" onclick="navLightbox(1)" aria-label="السابق">‹</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lbNav lbNext" onclick="navLightbox(-1)" aria-label="التالي">›</button>
+    <div class="lbCounter" id="lbCounter"></div>
+    <div class="lbCaption" id="lbCaption"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const WHATSAPP = "201013092460";
+
+// ===== صور منتجات احترافية من Unsplash =====
+const products = [
+  {
+    id:1, name:"كراسة لوكس 200 ورقة", price:65, cat:"كراسات", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:2, name:"كشكول سلك A4", price:65, cat:"كراسات", tag:"الأكثر طلبًا",
+    img:"https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:3, name:"طقم أقلام جاف (12 قلم)", price:45, cat:"أقلام", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:4, name:"ألوان خشبية 24 لون", price:75, cat:"فنية", tag:"عرض",
+    img:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:5, name:"شنطة مدرسية مقاومة للماء", price:250, cat:"مدرسية", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:6, name:"طقم أدوات هندسية كامل", price:55, cat:"هندسية", tag:"مميز",
+    img:"https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:7, name:"دباسة مكتبية معدنية", price:85, cat:"مكتبية", tag:"مميز",
+    img:"https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:8, name:"ألوان فلوماستر 12 لون", price:90, cat:"فنية", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:9, name:"ملف أوراق بلاستيك", price:35, cat:"مكتبية", tag:"عرض",
+    img:"https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:10, name:"مقلمة مدرسية كرتون", price:70, cat:"مدرسية", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:11, name:"قلم رصاص HB (علبة)", price:25, cat:"أقلام", tag:"عرض",
+    img:"https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:12, name:"أستيك ممحاة فاخر", price:15, cat:"مكتبية", tag:"مميز",
+    img:"https://images.unsplash.com/photo-1587145820266-a5951ee6f620?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:13, name:"مبراة معدنية", price:20, cat:"هندسية", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1595231712325-9fedecef7575?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:14, name:"مسطرة 30 سم شفافة", price:10, cat:"هندسية", tag:"عرض",
+    img:"https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id:15, name:"دفتر ملاحظات صغير", price:30, cat:"كراسات", tag:"جديد",
+    img:"https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("esmailCart") || "[]"); } catch(e) { cart = []; }
+let category = "الكل";
+
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+function setCat(cat, btn){
+  category = cat;
+  document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+// ===== دالة render الآمنة (بدون innerHTML) =====
+function render(){
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const list = products.filter(p =>
+    (category === "الكل" || p.cat === category) &&
+    p.name.toLowerCase().includes(q)
+  );
+  document.getElementById("result").textContent = list.length + " منتج";
+
+  const box = document.getElementById("products");
+  box.innerHTML = "";
+
+  if(!list.length){
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "🔍 لا توجد منتجات مطابقة للبحث";
+    box.appendChild(empty);
+    return;
+  }
+
+  list.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const pic = document.createElement("div");
+    pic.className = "pic";
+    const img = document.createElement("img");
+    img.src = p.img;
+    img.alt = p.name;
+    img.loading = "lazy";
+    img.style.cursor = "zoom-in";
+    img.onclick = () => openLightbox(p.id);
+    img.onerror = function(){ this.src = 'https://via.placeholder.com/400x400/082b63/ffffff?text=Esmail+Store'; };
+    pic.appendChild(img);
+
+    const info = document.createElement("div");
+    info.className = "info";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = p.tag;
+
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = p.name;
+
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = p.price + " ج.م";
+
+    const btn = document.createElement("button");
+    btn.className = "add";
+    btn.textContent = "🛒 أضف إلى السلة";
+    btn.onclick = () => add(p.id);
+
+    info.appendChild(tag);
+    info.appendChild(name);
+    info.appendChild(price);
+    info.appendChild(btn);
+    card.appendChild(pic);
+    card.appendChild(info);
+    box.appendChild(card);
+  });
+}
+
+function add(id){
+  const item = cart.find(x=>x.id===id);
+  if(item) item.qty++;
+  else cart.push({id, qty:1});
+  save();
+  const p = products.find(a=>a.id===id);
+  toast(`✅ تمت إضافة "${p.name}" إلى السلة`);
+}
+
+function save(){
+  try { localStorage.setItem("esmailCart", JSON.stringify(cart)); } catch(e){}
+  document.getElementById("count").textContent = cart.reduce((s,x)=>s+x.qty, 0);
+  renderCart();
+}
+
+function renderCart(){
+  const box = document.getElementById("cartList");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  box.innerHTML = "";
+
+  if(!cart.length){
+    const emptyDiv = document.createElement("div");
+    emptyDiv.style.cssText = "text-align:center;padding:50px 20px;color:#6b7a95";
+
+    const icon = document.createElement("div");
+    icon.style.cssText = "font-size:60px;margin-bottom:12px";
+    icon.textContent = "🛒";
+
+    const p1 = document.createElement("p");
+    p1.style.fontWeight = "700";
+    p1.textContent = "السلة فارغة";
+
+    const p2 = document.createElement("p");
+    p2.style.cssText = "font-size:13px;margin-top:6px";
+    p2.textContent = "ابدأ التسوق الآن وأضف منتجاتك المفضلة";
+
+    emptyDiv.appendChild(icon);
+    emptyDiv.appendChild(p1);
+    emptyDiv.appendChild(p2);
+    box.appendChild(emptyDiv);
+
+    document.getElementById("total").textContent = "0";
+    checkoutBtn.style.display = "none";
+    document.getElementById("form").classList.remove("show");
+    return;
+  }
+
+  checkoutBtn.style.display = "flex";
+  let total = 0;
+
+  cart.forEach(x => {
+    const p = products.find(a=>a.id===x.id);
+    if(!p) return;
+    const sub = p.price * x.qty;
+    total += sub;
+
+    const item = document.createElement("div");
+    item.className = "cartItem";
+
+    const img = document.createElement("img");
+    img.src = p.img;
+    img.alt = p.name;
+
+    const grow = document.createElement("div");
+    grow.className = "grow";
+
+    const b = document.createElement("b");
+    b.textContent = p.name;
+
+    const span = document.createElement("span");
+    span.textContent = `${p.price} ج.م × ${x.qty} = ${sub} ج.م`;
+
+    grow.appendChild(b);
+    grow.appendChild(span);
+
+    const qty = document.createElement("div");
+    qty.className = "qty";
+
+    const plusBtn = document.createElement("button");
+    plusBtn.textContent = "+";
+    plusBtn.setAttribute("aria-label", "زيادة");
+    plusBtn.onclick = () => change(p.id, 1);
+
+    const qtyNum = document.createElement("span");
+    qtyNum.textContent = x.qty;
+
+    const minusBtn = document.createElement("button");
+    minusBtn.textContent = "−";
+    minusBtn.setAttribute("aria-label", "نقص");
+    minusBtn.onclick = () => change(p.id, -1);
+
+    qty.appendChild(plusBtn);
+    qty.appendChild(qtyNum);
+    qty.appendChild(minusBtn);
+
+    item.appendChild(img);
+    item.appendChild(grow);
+    item.appendChild(qty);
+    box.appendChild(item);
+  });
+
+  document.getElementById("total").textContent = total;
+}
+
+function change(id, n){
+  const x = cart.find(a=>a.id===id);
+  if(!x) return;
+  x.qty += n;
+  if(x.qty <= 0) cart = cart.filter(a=>a.id !== id);
+  save();
+}
+
+function openCart(){
+  document.getElementById("overlay").classList.add("show");
+  document.body.style.overflow = "hidden";
+  renderCart();
+}
+
+function closeCart(){
+  document.getElementById("overlay").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function showForm(){
+  if(!cart.length){ toast("السلة فارغة 🛒"); return; }
+  const form = document.getElementById("form");
+  form.classList.add("show");
+  setTimeout(()=>form.scrollIntoView({behavior:"smooth", block:"start"}), 100);
+}
+
+function sendOrder(){
+  if(!cart.length){ toast("السلة فارغة 🛒"); return; }
+
+  const name = document.getElementById("customer").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+
+  if(!name){ toast("⚠️ من فضلك أدخل اسمك"); document.getElementById("customer").focus(); return; }
+  if(!/^01[0-9]{9}$/.test(phone)){ toast("⚠️ أدخل رقم هاتف صحيح (11 رقم يبدأ بـ 01)"); document.getElementById("phone").focus(); return; }
+  if(!address){ toast("⚠️ من فضلك أدخل عنوانك"); document.getElementById("address").focus(); return; }
+
+  let total = 0;
+  const lines = [];
+
+  cart.forEach(item => {
+    const product = products.find(p => p.id === item.id);
+    if(!product) return;
+    const subtotal = product.price * item.qty;
+    total += subtotal;
+    lines.push(`• ${product.name} × ${item.qty} = ${subtotal} ج.م`);
+  });
+
+  const message = [
+    "🛒 *طلب جديد من إسماعيل ستور*",
+    "",
+    `👤 *الاسم:* ${name}`,
+    `📞 *الهاتف:* ${phone}`,
+    `📍 *العنوان:* ${address}`,
+    "",
+    "*🛍️ المنتجات:*",
+    ...lines,
+    "",
+    `💰 *الإجمالي:* ${total} ج.م`,
+    "",
+    "شكرًا لتعاملكم معنا ❤️"
+  ].join("\n");
+
+  const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+
+  toast("✅ تم فتح واتساب لإتمام الطلب");
+}
+
+// ===== Lightbox Functions =====
+let lbList = [];
+let lbIndex = 0;
+
+function openLightbox(id){
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  lbList = products.filter(p =>
+    (category === "الكل" || p.cat === category) &&
+    p.name.toLowerCase().includes(q)
+  );
+  lbIndex = lbList.findIndex(p => p.id === id);
+  if(lbIndex === -1) return;
+  showLbImage();
+  document.getElementById("lightbox").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function showLbImage(){
+  const p = lbList[lbIndex];
+  if(!p) return;
+  document.getElementById("lbImg").src = p.img;
+  document.getElementById("lbImg").alt = p.name;
+  document.getElementById("lbCaption").textContent = `${p.name} — ${p.price} ج.م`;
+  document.getElementById("lbCounter").textContent = `${lbIndex + 1} / ${lbList.length}`;
+}
+
+function navLightbox(dir){
+  lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
+  showLbImage();
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+// إغلاق بـ Escape والتنقل بالأسهم
+document.addEventListener("keydown", e => {
+  const lb = document.getElementById("lightbox");
+  if(!lb.classList.contains("show")) return;
+  if(e.key === "Escape") closeLightbox();
+  if(e.key === "ArrowRight") navLightbox(-1);
+  if(e.key === "ArrowLeft") navLightbox(1);
+});
+
+document.getElementById("wa").href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("السلام عليكم، عايز أستفسر عن منتج من إسماعيل ستور 🛒")}`;
+
+render();
+save();
+</script>
+</body>
+</html>
